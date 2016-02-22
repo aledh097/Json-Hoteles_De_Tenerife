@@ -6,7 +6,6 @@ sys.setdefaultencoding("utf-8")
 # -*- encoding: utf-8 -*-
 
 import json
-import ast
 print "------------------------------------------"
 print "A= LISTAR NOMBRE DE LOS HOTELES JUNTO A SU COORDENADA"
 print "B= NUMERO DE HOTELES EN EL FICHERO JSON"
