@@ -12,6 +12,9 @@ print "A= LISTAR NOMBRE DE LOS HOTELES JUNTO A SU COORDENADA"
 print "B= NUMERO DE HOTELES EN EL FICHERO JSON"
 print "C= BUSCAR DIRECCION SEGUN NOMBRE DE HOTEL"
 print "D= BUSCAR HOTELES SEGUN SU TIPO"
+print "E= DEVUELVE EL NOMBRE DEL HOTEL SEGUN SU ID"
+print "F= DEVUELVE LA DIRECCION DEL HOTEL SEGUN SU GEOCODIGO"
+
 
 print "------------------------------------------"
 tecla=raw_input("Opcion: ")
@@ -50,3 +53,21 @@ if tecla=="d" or tecla=="D":
 	for l in doc:
 		if unicode(l["TIPO"])==unicode(buscador):
 			print l["NOMBRE"]
+			
+if tecla=="e" or tecla=="E":
+	buscador=int(raw_input("Dime el ID del hotel: "))
+	fichero=open("/home/usuario/prueba/prueba/hoteles.json","r")
+	lineas=json.loads(fichero.readline())
+	doc=lineas["docs"]
+	for l in doc:
+		if l["FID_1"]==buscador:
+			print l["NOMBRE"]
+
+if tecla=="f" or tecla=="F":
+	buscador=raw_input("Dime el ID del hotel: ")
+	fichero=open("/home/usuario/prueba/prueba/hoteles.json","r")
+	lineas=json.loads(fichero.readline())
+	doc=lineas["docs"]
+	for l in doc:
+		if l["GEOCODIGO"]==buscador:
+			print l["DIRECCION"]
