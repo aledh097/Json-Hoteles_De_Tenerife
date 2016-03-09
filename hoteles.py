@@ -1,7 +1,3 @@
-import sys
-reload(sys)
-sys.setdefaultencoding("utf-8")
-
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
@@ -13,6 +9,7 @@ print "C= BUSCAR DIRECCION SEGUN NOMBRE DE HOTEL"
 print "D= BUSCAR HOTELES SEGUN SU TIPO"
 print "E= DEVUELVE EL NOMBRE DEL HOTEL SEGUN SU ID"
 print "F= DEVUELVE LA DIRECCION DEL HOTEL SEGUN SU GEOCODIGO"
+print "G= GENERAR FICHERO HTML CON INFORMACIÓN DE LOS HOTELES"
 print "EXIT= PARA SALIR"
 
 print "------------------------------------------"
@@ -71,6 +68,26 @@ while tecla!="EXIT":
 		for l in doc:
 			if l["GEOCODIGO"]==buscador:
 				print l["DIRECCION"]
+	
+	if tecla=="G":
+		fichero=open("hoteles.json","r")
+		lineas=json.loads(fichero.readline())
+		doc=lineas["docs"]
+		f=open("index.html","w")
+		for l in doc:
+			nom=l["NOMBRE"]
+			di=l["DIRECCION"]
+			y=str(l["GRAD_Y"])
+			x=str(l["GRAD_X"])
+			url="http://www.openstreetmap.org/way/109089302#map=17/"+y+"/"+x
+			a="<h1>"+nom+"</h1>"
+			b="<p>"+di+"</p>"
+			c='<a href="'+url+'">Mapa</a>'
+			f.write(a+"\n")
+			f.write(b+"\n")
+			f.write(c+"\n")
+			f.write("\n")
+		f.close()
 			
 	print "------------------------------------------"
 	print "A= LISTAR NOMBRE DE LOS HOTELES JUNTO A SU COORDENADA"
@@ -79,6 +96,7 @@ while tecla!="EXIT":
 	print "D= BUSCAR HOTELES SEGUN SU TIPO"
 	print "E= DEVUELVE EL NOMBRE DEL HOTEL SEGUN SU ID"
 	print "F= DEVUELVE LA DIRECCION DEL HOTEL SEGUN SU GEOCODIGO"
+	print "G= GENERAR FICHERO HTML CON INFORMACIÓN DE LOS HOTELES"
 	print "EXIT= PARA SALIR"
 
 	print "------------------------------------------"
