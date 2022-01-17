@@ -2,6 +2,8 @@
 # -*- encoding: utf-8 -*-
 
 import json
+import os
+
 print "------------------------------------------"
 print "A= LISTAR NOMBRE DE LOS HOTELES JUNTO A SU COORDENADA"
 print "B= NUMERO DE HOTELES EN EL FICHERO JSON"
@@ -15,9 +17,11 @@ print "EXIT= PARA SALIR"
 print "------------------------------------------"
 tecla=str.upper(raw_input("Opcion: "))
 
+directory = os.getcwd()
+
 while tecla!="EXIT":
 	if tecla=="A":
-		fichero=open("/home/usuario/prueba/prueba/hoteles.json","r")
+		fichero=open(directory+"/hoteles.json","r")
 		lineas=json.loads(fichero.readline())
 		doc=lineas["docs"]
 		for l in doc:
@@ -25,7 +29,7 @@ while tecla!="EXIT":
 			print l["geometry"]["coordinates"]
 
 	if tecla=="B":
-		fichero=open("/home/usuario/prueba/prueba/hoteles.json","r")
+		fichero=open(directory+"/hoteles.json","r")
 		lineas=json.loads(fichero.readline())
 		doc=lineas["docs"]
 		contador=0
@@ -35,7 +39,7 @@ while tecla!="EXIT":
 
 	if tecla=="C":
 		buscador=raw_input("Dime el nombre del hotel: ")
-		fichero=open("/home/usuario/prueba/prueba/hoteles.json","r")
+		fichero=open(directory+"/hoteles.json","r")
 		lineas=json.loads(fichero.readline())
 		doc=lineas["docs"]
 		for l in doc:
@@ -44,7 +48,7 @@ while tecla!="EXIT":
 
 	if tecla=="D":
 		buscador=raw_input("Dime el tipo de hotel: ")
-		fichero=open("/home/usuario/prueba/prueba/hoteles.json","r")
+		fichero=open(directory+"/hoteles.json","r")
 		lineas=json.loads(fichero.readline())
 		doc=lineas["docs"]
 		for l in doc:
@@ -53,7 +57,7 @@ while tecla!="EXIT":
 			
 	if tecla=="e" or tecla=="E":
 		buscador=int(raw_input("Dime el ID del hotel: "))
-		fichero=open("/home/usuario/prueba/prueba/hoteles.json","r")
+		fichero=open(directory+"/hoteles.json","r")
 		lineas=json.loads(fichero.readline())
 		doc=lineas["docs"]
 		for l in doc:
@@ -62,7 +66,7 @@ while tecla!="EXIT":
 
 	if tecla=="F":
 		buscador=raw_input("Dime el ID del hotel: ")
-		fichero=open("/home/usuario/prueba/prueba/hoteles.json","r")
+		fichero=open(directory+"/hoteles.json","r")
 		lineas=json.loads(fichero.readline())
 		doc=lineas["docs"]
 		for l in doc:
